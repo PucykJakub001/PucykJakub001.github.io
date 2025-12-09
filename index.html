@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizualizacja Algorytmu A-gwiazdka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌟 Wizualizacja Algorytmu A-gwiazdka (A*)</h1>
+    </header>
+
+    <div class="main-container">
+
+        <div class="controls-panel">
+            <h2>⚙️ Kontrola Siatki i Algorytmu</h2>
+
+            <div class="control-group">
+                <h3>1A. Ustawienia Siatki</h3>
+                <label for="grid-size">Rozmiar Siatki (np. 25 dla 25x25):</label>
+                <input type="number" id="grid-size" value="20" min="5" max="50">
+                <button id="generate-grid-btn">Generuj Siatkę</button>
+                
+                <label for="speed-range">Szybkość Animacji:</label>
+                <input type="range" id="speed-range" min="10" max="500" value="50">
+                <span id="speed-value">50 (460 ms)</span>
+            </div>
+
+            <div class="control-group">
+                <h3>1B. Wczytaj Mapę (.txt)</h3>
+                <input type="file" id="file-input" accept=".txt">
+                <button id="load-map-btn">Wczytaj i Generuj</button>
+                <p class="small-info">Konwencja: 1=Start, 2=Meta, 5=Ściana, 0=Pusta</p>
+            </div>
+
+            <hr>
+
+            <div class="control-group">
+                <h3>2. Tryb Interakcji</h3>
+                <p>Kliknij w siatkę, aby ustawić:</p>
+                <button id="mode-start" class="mode-btn active" data-mode="start">Start (Zielony)</button>
+                <button id="mode-end" class="mode-btn" data-mode="end">Meta (Niebieski)</button>
+                <button id="mode-wall" class="mode-btn" data-mode="wall">Przeszkody (Czarny)</button>
+            </div>
+            
+            <hr>
+
+            <div class="control-group">
+                <h3>3. Sterowanie Algorytmem</h3>
+                <button id="start-btn">▶️ START</button>
+                <button id="reset-visualization-btn">🔁 Resetuj Wizualizację</button>
+                <button id="clear-all-btn">❌ Wyczyść Wszystko</button>
+            </div>
+        </div>
+
+        <div id="grid-container" class="grid-container">
+            </div>
+    </div>
+    
+    <div id="cost-display" class="cost-display"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

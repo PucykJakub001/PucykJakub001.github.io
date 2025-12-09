@@ -1,0 +1,150 @@
+/* --- Podstawowe Style --- */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    max-width: 1400px;
+}
+
+.controls-panel {
+    width: 300px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+button, input[type="number"], input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#start-btn {
+    background-color: #4CAF50; /* Zielony START */
+    color: white;
+    font-weight: bold;
+}
+
+.mode-btn {
+    background-color: #e0e0e0;
+    width: 32%; /* Dzielimy przestrzeń na trzy */
+    padding: 8px;
+}
+
+.mode-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.small-info {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: -5px;
+}
+
+/* --- Style Siatki i Węzłów --- */
+.grid-container {
+    display: grid;
+    flex-grow: 1;
+    /* NOWA RAMKA: grubsza i ciemniejsza, zastosowana do każdej siatki */
+    border: 3px solid #333333; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.node {
+    /* KLUCZ do płynnych animacji */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid #aaaaaa; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.node:hover {
+    background-color: #ddd;
+}
+
+/* --- Kolorystyka Węzłów --- */
+
+.node.start {
+    background-color: #4CAF50; /* Zielony */
+}
+
+.node.end {
+    background-color: #007bff; /* Niebieski */
+}
+
+.node.wall {
+    background-color: #2c3e50; /* Czarny/Ciemny szary */
+}
+
+/* Zbiór Otwarty (Lekko Szary/Jasnoniebieski) */
+.node.open {
+    background-color: #a0c4ff; 
+    animation: open-pulse 0.5s infinite alternate;
+}
+
+/* Zbiór Zamknięty (Ciemny Szary) */
+.node.closed {
+    background-color: #f7c59d; 
+    color: white;
+}
+
+/* Ostateczna Ścieżka (Czerwony) */
+.node.path {
+    background-color: #e74c3c; 
+    transform: scale(1.1); 
+    border-color: #c0392b;
+}
+
+/* Animacja pulsacji */
+@keyframes open-pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+}
+
+/* --- Styl wyświetlania kosztów (Tooltip) --- */
+#cost-display {
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1000;
+    opacity: 0; /* Domyślnie ukryte */  
+    transition: opacity 0.2s;
+    line-height: 1.6;
+}
+
+#cost-display.visible {
+    opacity: 1;
+}
+
+#cost-display strong {
+    font-weight: bold;
+    color: #ffd700; /* Żółty dla wyróżnienia kosztów */
+}
